@@ -30,7 +30,6 @@ module "sql" {
   instance_name_prefix = var.sql_configs.instance_name_prefix
   disk_size            = var.sql_configs.disk_size
   disk_type            = var.sql_configs.disk_type
-  private_network      = module.vpc.vpc_id
   instance_region      = var.sql_configs.instance_region
   availability_type    = var.sql_configs.availability_type
   consumer_projects    = var.sql_configs.consumer_projects
@@ -81,7 +80,7 @@ module "vm" {
       echo "PROD_DB_NAME=${module.sql.db_name}" >> /tmp/.env
       echo "PROD_DB_USER=${module.sql.db_instance_user}" >> /tmp/.env
       echo "PROD_DB_PASS=${module.sql.db_instance_password}" >> /tmp/.env
-      echo "PROD_HOST=${var.internal_ip_address}" >> /tmp/.env
+      echo "PROD_HOST=${google_compute_address.internal_ip.address}" >> /tmp/.env
       echo "NODE_ENV=production" >> /tmp/.env
 
       mv /tmp/.env /opt/webapp/app
