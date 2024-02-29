@@ -87,5 +87,5 @@ module "vm" {
       chown csye6225:csye6225 /opt/webapp/app/.env
 
       EOT
-
+  depends_on = [ google_compute_address.internal_ip ]
 }
