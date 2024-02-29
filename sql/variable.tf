@@ -35,10 +35,6 @@ variable "consumer_projects" {
   # default = []
 }
 
-variable "private_network" {
-  type = string
-}
-
 variable "sql_user" {
   type = string
 }
