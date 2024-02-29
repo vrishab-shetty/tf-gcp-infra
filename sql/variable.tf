@@ -38,3 +38,7 @@ variable "consumer_projects" {
 variable "sql_user" {
   type = string
 }
+
+variable "tier" {
+  type = string
+}

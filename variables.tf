@@ -42,9 +42,8 @@ variable "internal_ip_name" {
   type = string
 }
 
-variable "internal_ip_purpose" {
-  type    = string
-  default = "PRIVATE_SERVICE_CONNECT"
+variable "forwarding_rule_name" {
+  type = string
 }
 
 variable "sql_configs" {
@@ -59,5 +58,5 @@ variable "sql_configs" {
     availability_type    = optional(string, "REGIONAL")
     consumer_projects    = optional(list(string), [])
     sql_user             = optional(string, "admin")
-  })
+    db_tier = optional(string, "db-f1-micro")})
 }
